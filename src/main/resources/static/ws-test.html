@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <title>WebSocket ??</title>
+</head>
+<body>
+<h1>WebSocket ??</h1>
+<ul id="list"></ul>
+
+<script>
+    const ul = document.getElementById('list');
+    const ws = new WebSocket('ws://localhost:8081/ws/flow');
+
+    ws.onopen = () => {
+        const li = document.createElement('li');
+        li.textContent = '? ???';
+        ul.appendChild(li);
+    };
+
+    ws.onmessage = (event) => {
+        const li = document.createElement('li');
+        li.textContent = event.data;
+        ul.appendChild(li);
+    };
+
+    ws.onerror = () => {
+        const li = document.createElement('li');
+        li.textContent = '? ????';
+        ul.appendChild(li);
+    };
+</script>
+</body>
+</html>
